@@ -19,3 +19,9 @@ function func3 () {
 
 const voidVar1: void = null;
 const voidVar2: void = undefined;
+
+const arr1: string[] = [];
+const arr2: Array<string> = [];
+
+const arr3: [string, string, string] = ['wang', 'xiao', 'bai'];
+arr3[599];
