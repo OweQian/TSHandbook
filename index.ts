@@ -175,3 +175,150 @@
 // async function asyncFunc(): Promise<void> {}
 // function* genFunc(): Iterable<void> {}
 // async function* asyncGenFunc(): AsyncIterable<void> {}
+
+class Foo {
+  prop: string;
+
+  constructor(inputProps: string) {
+    this.prop = inputProps;
+  }
+
+  print (addon: string): string {
+    return `${this.prop} and ${addon}`;
+  }
+
+  get PropA(): string {
+    return `${this.prop}+A`;
+  }
+
+  set PropA(value: string) {
+    this.prop = `${value}`;
+  }
+}
+
+const Foo = class {
+  prop: string;
+
+  constructor(inputProps: string) {
+    this.prop = inputProps;
+  }
+
+  print (addon: string): string {
+    return `${this.prop} and ${addon}`;
+  }
+
+  get PropA(): string {
+    return `${this.prop}+A`;
+  }
+
+  set PropA(value: string) {
+    this.prop = `${value}`;
+  }
+}
+
+class Foo {
+  private prop: string;
+
+  constructor(inputProps: string) {
+    this.prop = inputProps;
+  }
+
+  protected print (addon: string): string {
+    return `${this.prop} and ${addon}`;
+  }
+
+  public get PropA(): string {
+    return `${this.prop}+A`;
+  }
+
+  public set PropA(value: string) {
+    this.prop = `${value}`;
+  }
+}
+
+class Foo {
+  constructor(public arg1: string, private arg2: boolean) {
+  }
+}
+
+new Foo('wangxiaobai', false);
+
+class Foo {
+  static staticHandler () {}
+  public instanceHandler () {}
+}
+
+class Utils {
+  static identifier = 'wangxiaobai'
+
+  static studyWithU () {
+
+  }
+
+  static makeUHappy () {
+    Utils.studyWithU()
+  }
+}
+
+Utils.makeUHappy()
+
+class Base {}
+
+class Derived extends Base {}
+
+class Base {
+  print () {}
+}
+
+class Derived extends Base {
+  print() {
+    super.print();
+    // ...
+  }
+}
+
+class Base {
+  printWithLove() {}
+}
+
+class Derived extends Base {
+  override print() {
+    super.print();
+  }
+}
+
+abstract class AbsFoo {
+  abstract absProp: string;
+  abstract get absGetter (): string;
+  abstract absMethod (name: string): string;
+}
+
+class Foo implements AbsFoo {
+  absProp: string = 'wangxiaobai';
+
+  get absGetter(): string {
+    return 'wangxiaobai';
+  }
+
+  absMethod(name: string): string {
+    return name;
+  }
+}
+
+interface IFooStruct {
+  absProp: string;
+  get absGetter (): string;
+  absMethod (name: string): string;
+}
+
+class Foo implements IFooStruct {
+  absProp: string = 'wangxiaobai';
+
+  get absGetter(): string {
+    return 'wangxiaobai';
+  }
+
+  absMethod(name: string): string {
+    return name;
+  }
+}
