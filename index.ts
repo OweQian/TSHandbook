@@ -176,149 +176,419 @@
 // function* genFunc(): Iterable<void> {}
 // async function* asyncGenFunc(): AsyncIterable<void> {}
 
-class Foo {
-  prop: string;
+// class Foo {
+//   prop: string;
+//
+//   constructor(inputProps: string) {
+//     this.prop = inputProps;
+//   }
+//
+//   print (addon: string): string {
+//     return `${this.prop} and ${addon}`;
+//   }
+//
+//   get PropA(): string {
+//     return `${this.prop}+A`;
+//   }
+//
+//   set PropA(value: string) {
+//     this.prop = `${value}`;
+//   }
+// }
+//
+// const Foo = class {
+//   prop: string;
+//
+//   constructor(inputProps: string) {
+//     this.prop = inputProps;
+//   }
+//
+//   print (addon: string): string {
+//     return `${this.prop} and ${addon}`;
+//   }
+//
+//   get PropA(): string {
+//     return `${this.prop}+A`;
+//   }
+//
+//   set PropA(value: string) {
+//     this.prop = `${value}`;
+//   }
+// }
+//
+// class Foo {
+//   private prop: string;
+//
+//   constructor(inputProps: string) {
+//     this.prop = inputProps;
+//   }
+//
+//   protected print (addon: string): string {
+//     return `${this.prop} and ${addon}`;
+//   }
+//
+//   public get PropA(): string {
+//     return `${this.prop}+A`;
+//   }
+//
+//   public set PropA(value: string) {
+//     this.prop = `${value}`;
+//   }
+// }
+//
+// class Foo {
+//   constructor(public arg1: string, private arg2: boolean) {
+//   }
+// }
+//
+// new Foo('wangxiaobai', false);
+//
+// class Foo {
+//   static staticHandler () {}
+//   public instanceHandler () {}
+// }
+//
+// class Utils {
+//   static identifier = 'wangxiaobai'
+//
+//   static studyWithU () {
+//
+//   }
+//
+//   static makeUHappy () {
+//     Utils.studyWithU()
+//   }
+// }
+//
+// Utils.makeUHappy()
+//
+// class Base {}
+//
+// class Derived extends Base {}
+//
+// class Base {
+//   print () {}
+// }
+//
+// class Derived extends Base {
+//   print() {
+//     super.print();
+//     // ...
+//   }
+// }
+//
+// class Base {
+//   printWithLove() {}
+// }
+//
+// class Derived extends Base {
+//   override print() {
+//     super.print();
+//   }
+// }
+//
+// abstract class AbsFoo {
+//   abstract absProp: string;
+//   abstract get absGetter (): string;
+//   abstract absMethod (name: string): string;
+// }
+//
+// class Foo implements AbsFoo {
+//   absProp: string = 'wangxiaobai';
+//
+//   get absGetter(): string {
+//     return 'wangxiaobai';
+//   }
+//
+//   absMethod(name: string): string {
+//     return name;
+//   }
+// }
+//
+// interface IFooStruct {
+//   absProp: string;
+//   get absGetter (): string;
+//   absMethod (name: string): string;
+// }
+//
+// class Foo implements IFooStruct {
+//   absProp: string = 'wangxiaobai';
+//
+//   get absGetter(): string {
+//     return 'wangxiaobai';
+//   }
+//
+//   absMethod(name: string): string {
+//     return name;
+//   }
+// }
 
-  constructor(inputProps: string) {
-    this.prop = inputProps;
-  }
+// const log: (message?: any, ...rest: any[]) => void
+//
+// let foo
+//
+// function func (foo, bar) {}
+//
+// let anyVar: any = 'wangxiaobai'
+//
+// anyVar = false
+//
+// anyVar = 'oweQian'
+//
+// anyVar = {
+//   site: 'github.io'
+// }
+//
+// anyVar = () => {}
+//
+// const var1: string = anyVar;
+// const var2: number = anyVar;
+// const var3: () => {} = anyVar;
+// const val4: {} = anyVar;
+//
+// let anyVar: any = null;
+// anyVar.baz();
+// anyVar[0]
+//
+// let unknownVar: unknown = 'wangxiaobai'
+//
+// unknownVar = false
+// unknownVar = 'oweQian'
+// unknownVar = {
+//   site: 'github.io'
+// }
+// unknownVar = () => {}
+//
+// const var1: string = unknownVar;
+// const var2: number = unknownVar;
+// const var3: () => {} = unknownVar;
+// const var4: {} = unknownVar;
+//
+// const var5: any = unknownVar;
+// const var6: unknown = unknownVar;
+//
+// unknownVar.foo();
+//
+// type UnionWithNever = 'wangxiaobai' | 18 | true | void | never;
+//
+// declare let v1: never;
+// declare let v2: void;
+//
+// v1 = v2;
+//
+// v2 = v1;
+//
+// function justThrow(): never {
+//   throw new Error()
+// }
+//
+// function foo (input: number) {
+//   if (input > 1) {
+//     justThrow();
+//     const name = 'wangxiaobai';
+//   }
+// }
+//
+// let unknownVar: unknown;
+// (unknownVar as { foo: () => {}}).foo();
+//
+// function foo (union: string | number) {
+//   if ((union as string).includes('wangxiaobai')) {}
+//   if ((union as number).toFixed() === '18') {}
+// }
+//
+// interface IFoo {
+//   name: string;
+// }
+//
+// declare const obj: {
+//   foo: IFoo
+// }
+//
+// const {
+//   foo = {} as IFoo
+// } = obj
+//
+// const str: string = 'wangxiaobai'
+//
+// (str as { handler: () => {} }).handler();
+//
+// (str as unknown as { handler: () => {} }).handler();
 
-  print (addon: string): string {
-    return `${this.prop} and ${addon}`;
-  }
+// (<{ handler: () => {}}>(<unknown>str)).handler()
+//
+// declare const foo: {
+//   func?: () => ({
+//     prop?: number | null
+//   })
+// }
+//
+// foo.func!().prop!.toFixed()
+//
+// foo.func?.().prop?.toFixed()
+//
+// const element = document.querySelector('#id')!;
+// const target = [1, 2, 3, 18].find(item => item === 18)!;
+//
+// interface IStruct {
+//   foo: string;
+//   bar: {
+//     barPropA: string;
+//     barPropB: string;
+//     barMethod: () => void;
+//     baz: {
+//       handler: () => Promise<void>;
+//     }
+//   }
+// }
+//
+// const obj: IStruct = <IStruct>{
+//   bar: {
+//     baz: {}
+//   }
+// }
 
-  get PropA(): string {
-    return `${this.prop}+A`;
-  }
+// type A = string;
+//
+// type StatusCode = 200 | 301 | 400 | 500 | 502;
+// type PossibleDataTypes = string | number | (() => unknown);
+//
+// const status: StatusCode = 301;
+//
+// type Handler = (e: Event) => void;
+//
+// const clickHandler = (e: Event) => {}
+// const moveHandler = (e: Event) => {}
+// const dragHandler = (e: Event) => {}
+//
+// type ObjType = {
+//   name: string;
+//   age: number;
+// }
+//
+// type Factory<T> = T | number | string;
+//
+// const foo: Factory<boolean> = true;
+//
+// type FactoryWithBool = Factory<boolean>;
+//
+// const foo: FactoryWithBool = true;
+//
+// type MaybeNull<T> = T | null;
+//
+// function process(input: MaybeNull<{ handler: () => {}}>) {
+//   input?.handler();
+// }
+//
+// type MaybeArray<T> = T | T[];
+//
+// function ensureArray<T>(input: MaybeArray<T>): T[] {
+//   return Array.isArray(input) ? input : [input]
+// }
+//
+// interface INameStruct {
+//   name: string;
+// }
+//
+// interface IAgeStruct {
+//   age: number;
+// }
+//
+// type ProfileStruct = INameStruct & IAgeStruct;
+//
+// const profile: ProfileStruct = {
+//   name: 'wangxiaobai',
+//   age: 18
+// }
+//
+// type StrAndNum = string & number;
+//
+// type Struct1 = {
+//   primitiveProp: string;
+//   objectProp: {
+//     name: string;
+//   }
+// }
+//
+// type Struct2 = {
+//   primitiveProp: number;
+//   objectProp: {
+//     age: number;
+//   }
+// }
+//
+// type Composed = Struct1 & Struct2
+//
+// type PrimitivePropType = Composed['primitiveProp'];
+// type objectPropType = Composed['objectProp'];
+//
+// type UnionIntersection1 = (1 | 2 | 3) & (1 | 2);
+// type UnionIntersection2 = (string | number | symbol) & string;
+//
+// interface AllStringTypes {
+//   [key: string]: string;
+// }
+//
+// interface AllStringTypes {
+//   propA: number;
+//   [key: string]: string;
+// }
+//
+// interface StringOrBooleanTypes {
+//   propA: number;
+//   propB: boolean;
+//   [key: string]: number | boolean;
+// }
+//
+// interface IAnyTypeHere {
+//   [key: string]: any;
+// }
+//
+// interface IFoo {
+//   wangxiaobai: 1,
+//   18: 2,
+// }
+//
+// type FooKeys = keyof IFoo;
+//
+// type AnyKeys = keyof any;
+//
+//
+// interface NumberRecord {
+//   [key: string]: number;
+// }
+//
+// type PropType = NumberRecord[string];
+//
+// interface Foo {
+//   propA: string;
+//   propB: boolean;
+// }
+//
+// type PropAType = Foo['propA'];
+// type PropBType = Foo['propB'];
 
-  set PropA(value: string) {
-    this.prop = `${value}`;
-  }
-}
-
-const Foo = class {
-  prop: string;
-
-  constructor(inputProps: string) {
-    this.prop = inputProps;
-  }
-
-  print (addon: string): string {
-    return `${this.prop} and ${addon}`;
-  }
-
-  get PropA(): string {
-    return `${this.prop}+A`;
-  }
-
-  set PropA(value: string) {
-    this.prop = `${value}`;
-  }
-}
-
-class Foo {
-  private prop: string;
-
-  constructor(inputProps: string) {
-    this.prop = inputProps;
-  }
-
-  protected print (addon: string): string {
-    return `${this.prop} and ${addon}`;
-  }
-
-  public get PropA(): string {
-    return `${this.prop}+A`;
-  }
-
-  public set PropA(value: string) {
-    this.prop = `${value}`;
-  }
-}
-
-class Foo {
-  constructor(public arg1: string, private arg2: boolean) {
-  }
-}
-
-new Foo('wangxiaobai', false);
-
-class Foo {
-  static staticHandler () {}
-  public instanceHandler () {}
-}
-
-class Utils {
-  static identifier = 'wangxiaobai'
-
-  static studyWithU () {
-
-  }
-
-  static makeUHappy () {
-    Utils.studyWithU()
-  }
-}
-
-Utils.makeUHappy()
-
-class Base {}
-
-class Derived extends Base {}
-
-class Base {
-  print () {}
-}
-
-class Derived extends Base {
-  print() {
-    super.print();
-    // ...
-  }
-}
-
-class Base {
-  printWithLove() {}
-}
-
-class Derived extends Base {
-  override print() {
-    super.print();
-  }
-}
-
-abstract class AbsFoo {
-  abstract absProp: string;
-  abstract get absGetter (): string;
-  abstract absMethod (name: string): string;
-}
-
-class Foo implements AbsFoo {
-  absProp: string = 'wangxiaobai';
-
-  get absGetter(): string {
-    return 'wangxiaobai';
-  }
-
-  absMethod(name: string): string {
-    return name;
-  }
-}
-
-interface IFooStruct {
-  absProp: string;
-  get absGetter (): string;
-  absMethod (name: string): string;
-}
-
-class Foo implements IFooStruct {
-  absProp: string = 'wangxiaobai';
-
-  get absGetter(): string {
-    return 'wangxiaobai';
-  }
-
-  absMethod(name: string): string {
-    return name;
-  }
-}
+// interface IFoo {
+//   propA: string;
+//   propB: boolean;
+//   propC: number;
+// }
+//
+// type PropTypeUnion = IFoo[keyof IFoo]
+//
+// type Stringify<T> = {
+//   [k in keyof T]: string;
+// }
+//
+// interface IFoo {
+//   prop1: string;
+//   prop2: number;
+//   prop3: boolean;
+//   prop4: () => void;
+// }
+//
+// type StringifiedFoo = Stringify<IFoo>;
+//
+// type Clone<T> = {
+//   [k in keyof T]: T[k]
+// }
