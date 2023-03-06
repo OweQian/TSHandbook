@@ -592,3 +592,297 @@
 // type Clone<T> = {
 //   [k in keyof T]: T[k]
 // }
+//
+// const str = 'wangxiaobai';
+// const obj = {
+//   name: 'wangxiaobai'
+// }
+// const nullVar = null;
+// const undefinedVar = undefined;
+//
+// const func = (input: string) => {
+//   return input.length > 10;
+// }
+//
+// type Str = typeof str;
+// type Null = typeof nullVar;
+// type Undefined = typeof undefinedVar;
+// type Obj = typeof obj;
+// type Func = typeof func;
+//
+// const func2: typeof func = (name: string) => {
+//   return name === 'wangxiaobai';
+// }
+//
+// function foo (input: string | number) {
+//   if (typeof input === 'string') {}
+//   if (typeof input === 'number') {}
+// }
+//
+// declare const strOrNumOrBool: string | number | boolean;
+//
+// if (typeof strOrNumOrBool === 'string') {
+//   // 一定是字符串！
+//   strOrNumOrBool.charAt(1);
+// } else if (typeof strOrNumOrBool === 'number') {
+//   // 一定是数字！
+//   strOrNumOrBool.toFixed();
+// } else if (typeof strOrNumOrBool === 'boolean') {
+//   // 一定是布尔值！
+//   strOrNumOrBool === true;
+// } else {
+//   // 要是走到这里就说明有问题！
+//   const _exhaustiveCheck: never = strOrNumOrBool;
+//   throw new Error(`Unknown input type: ${_exhaustiveCheck}`);
+// }
+
+// function isString (input: unknown): boolean {
+//   return typeof input === 'string';
+// }
+//
+// function foo (input: string | number) {
+//   if (isString(input)) {
+//     input.replace('wangxiaobai', 'wangxiaobai18');
+//   }
+//   if (typeof input === 'number') {}
+// }
+
+// function isString (input: unknown): input is string {
+//   return typeof input === 'string';
+// }
+//
+// function foo (input: string | number) {
+//   if (isString(input)) {
+//     input.replace('wangxiaobai', 'wangxiaobai18');
+//   }
+//   if (typeof input === 'number') {}
+// }
+
+// function isString (input: unknown): input is number {
+//   return typeof input === 'string';
+// }
+//
+// function foo (input: string | number) {
+//   if (isString(input)) {
+//     input.replace('wangxiaobai', 'wangxiaobai18');
+//   }
+//   if (typeof input === 'number') {}
+// }
+
+// type Falsy = false | '' | null | undefined;
+// const isFalsy = (input: unknown): input is Falsy => !input;
+//
+// type Primitive = string | number | boolean | undefined;
+// const isPrimitive = (input: unknown): input is Primitive => ['string', 'number', 'boolean', 'undefined'].includes(typeof input);
+
+// interface Foo {
+//   foo: string;
+//   fooOnly: boolean;
+//   shared: number;
+// }
+//
+// interface Bar {
+//   bar: string;
+//   barOnly: boolean;
+//   shared: number;
+// }
+//
+// function handle (input: Foo | Bar) {
+//   if ('foo' in input) {
+//     return input.fooOnly;
+//   } else {
+//     return input.barOnly;
+//   }
+// }
+//
+// function ensureArray(input: number | number[]): number[] {
+//   if (Array.isArray(input)) {
+//     return input;
+//   } else {
+//     return [input];
+//   }
+// }
+//
+// interface Foo {
+//   kind: 'foo';
+//   diffType: string;
+//   fooOnly: boolean;
+//   shared: number;
+// }
+//
+// interface Bar {
+//   kind: 'bar';
+//   diffType: number;
+//   barOnly: boolean;
+//   shared: number;
+// }
+//
+// function handle1(input: Foo | Bar) {
+//   if (input.kind === 'foo') {
+//     input.fooOnly;
+//   } else {
+//     input.barOnly;
+//   }
+// }
+//
+// class FooBase {}
+//
+// class BarBase {}
+//
+// class Foo extends FooBase {
+//   fooOnly() {}
+// }
+// class Bar extends BarBase {
+//   barOnly() {}
+// }
+//
+// function handle(input: Foo | Bar) {
+//   if (input instanceof FooBase) {}
+//   if (input instanceof BarBase) {}
+// }
+
+// let name: any = 'wangxiaobai';
+//
+// function assertIsNumber (input: any): asserts input is number {
+//   if (typeof input !== 'number') {
+//     throw new Error('input is not a number')
+//   }
+// }
+//
+// assertIsNumber(name);
+//
+// name.toFixed();
+//
+// type Factory<T> = T | number | string;
+//
+// type Stringify<T> = {
+//   [K in keyof T]: string;
+// }
+//
+// type Clone<T> = {
+//   [K in keyof T]: T[K];
+// }
+
+// type Partial<T> = {
+//   [K in keyof T]?: T[K]
+// }
+
+// interface IFoo {
+//   prop1: string;
+//   prop2: number;
+//   prop3: boolean;
+//   prop4: () => void;
+// }
+//
+// type PartialFoo = Partial<IFoo>;
+//
+// type IsEqual<T> = T extends true ? 1 : 2;
+//
+// type A = IsEqual<true>;
+// type B = IsEqual<false>;
+// type C = IsEqual<'wangxiaobai'>;
+
+// type Factory<T = boolean> = T | string | number;
+//
+// const foo: Factory = false;
+//
+// type ResStatus<ResCode extends number> = ResCode extends 10000 | 10001 | 10002 ? 'success' : 'failure';
+//
+// type Res1 = ResStatus<10000>;
+// type Res2 = ResStatus<20000>;
+// type Res3 = ResStatus<'10000'>;
+
+// type ResStatus<ResCode extends number = 10000> = ResCode extends 10000 | 10001 | 10002 ? 'success' : 'failure';
+//
+// type Res1 = ResStatus;
+
+// type Conditional<Type, Condition, TruthyResult, FalsyResult> = Type extends Condition ? TruthyResult : FalsyResult;
+//
+// type Result1 = Conditional<'wangxiaobai', string, 'passed', 'rejected'>;
+// type Result2 = Conditional<'wangxiaobai', boolean, 'passed', 'rejected'>;
+//
+// type ProcessInput<Input, SecondInput extends Input = Input, ThirdInput extends SecondInput = SecondInput> = number;
+//
+// interface IRes<TData = unknown> {
+//   code: number;
+//   error?: string;
+//   data: TData;
+// }
+//
+// interface IUserProfileRes {
+//   name: string;
+//   homePage: string;
+//   avatar: string;
+// }
+//
+// function fetchUserProfile(): Promise<IRes<IUserProfileRes>> {}
+//
+// type StatusSucceed = boolean;
+//
+// function handleOperation(): Promise<IRes<StatusSucceed>> {}
+//
+// interface IPaginationRes<TItem = unknown> {
+//   data: TItem[];
+//   page: number;
+//   totalCount: number;
+//   hasNextPage: boolean;
+// }
+//
+// function fetchUserProfileList(): Promise<IRes<IPaginationRes<IUserProfileRes>>> {}
+//
+// function handle<T>(input: T): T {}
+//
+// function swap<T, U>([start, end]: [T, U]): [U, T] {
+//   return [end, start];
+// }
+//
+// const swapped1 = swap(['wangxiaobai', 18]);
+// const swapped2 = swap([null, 18]);
+// const swapped3 = swap([{name: 'wangxiaobai'}, {}])
+
+// function handle<T extends string | number>(input: T): T {}
+//
+// function swap<T extends number, U extends number>([start, end]: [T, U]): [U, T] {
+//   return [end, start];
+// }
+//
+// function pick<T extends object, U extends keyof T>(object: T, ...props: U[]): Pick<T, U> {}
+
+// function handle<T>(payload: T): Promise<T[]> {
+//   return new Promise<T[]>((resolve, reject) => {
+//     resolve([payload])
+//   })
+// }
+
+// const handle = <T extends any>(input: T): T => {}
+
+// class Queue<IElementType> {
+//   private _list: IElementType[]
+//   constructor(initial: IElementType[]) {
+//     this._list = initial
+//   }
+//
+//   enqueue<TType extends IElementType>(ele: TType) {
+//     this._list.push(ele);
+//     return this._list;
+//   }
+//
+//   enqueueWithUnknownType<TType>(element: TType): (IElementType | TType)[] {
+//     return [...this._list, element];
+//   }
+//
+//   dequeue(): IElementType[] {
+//     this._list.shift();
+//     return this._list;
+//   }
+// }
+
+// function p() {
+//   return new Promise<boolean>((resolve, reject) => {
+//     resolve(true)
+//   })
+// }
+//
+// const arr: Array<number> = [1, 2, 3];
+//
+// arr.push('wangxiaobai');
