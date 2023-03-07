@@ -886,3 +886,60 @@
 // const arr: Array<number> = [1, 2, 3];
 //
 // arr.push('wangxiaobai');
+
+// class Cat {
+//   eat(): boolean {
+//     return true
+//   }
+// }
+//
+// class Dog {
+//   eat(): number {
+//     return 18
+//   }
+// }
+//
+// function feedCat(cat: Cat) {}
+//
+// feedCat(new Dog())
+
+// declare class TagProtector<T extends string> {
+//   private _tag_: T;
+// }
+//
+// type Nominal<T, U extends string> = T & TagProtector<U>;
+//
+// type CNY = Nominal<number, 'CNY'>;
+// type USD = Nominal<number, 'USD'>;
+//
+// const CNYCount = 100 as CNY;
+// const USDCount = 100 as USD;
+//
+// function addCNY(source: CNY, input: CNY) {
+//   return (source + input) as CNY;
+// }
+//
+// addCNY(CNYCount, CNYCount);
+//
+// addCNY(USDCount, USDCount);
+
+// class CNY {
+//   private _tag!: void;
+//   constructor(public value: number) {}
+// }
+//
+// class USD {
+//   private _tag!: void;
+//   constructor(public value: number) {}
+// }
+//
+// const CNYCount = new CNY(100);
+// const USDCount = new USD(100);
+//
+// function addCNY(source: CNY, input: CNY) {
+//   return source.value + input.value;
+// }
+//
+// addCNY(CNYCount, CNYCount);
+// addCNY(USDCount, USDCount);
+
