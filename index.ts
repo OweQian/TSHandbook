@@ -943,3 +943,39 @@
 // addCNY(CNYCount, CNYCount);
 // addCNY(USDCount, USDCount);
 
+// type Result = 'wangxiaobai' extends string ? 1 : 2;
+//
+// declare let source: string;
+// declare let anyType: any;
+// declare let neverType: never;
+//
+// anyType = source;
+// neverType = source;
+
+type Result1 = 'wangxiaobai' extends string ? 1 : 2;
+type Result2 = 1 extends number ? 1 : 2;
+type Result3 = true extends boolean ? 1 : 2;
+type Result4 = { name: string } extends object ? 1 : 2;
+type Result5 = { name: 'wangxiaobai' } extends object ? 1 : 2;
+type Result6 = [] extends object ? 1 : 2;
+type Result7 = 1 extends 1 | 2 | 3 ? 1 : 2;
+type Result8 = 'wang' extends 'wang' | 'xiao' | 'bai' ? 1 : 2;
+type Result9 = true extends true | false ? 1 : 2;
+type Result10 = string extends string | number | false ? 1 : 2;
+type Result11 = 'wang' | 'xiao' | 'bai' extends string ? 1 : 2;
+type Result12 = {} | (() => {}) | [] extends object ? 1 : 2;
+type Result13 = 'wangxiaobai' extends 'wangxiaobai' | 18 ? 'wangxiabai' | '18' extends string ? 2 : 1 : 0;
+type Result14 = string extends String ? 1 : 2;
+type Result15 = String extends {} ? 1 : 2;
+type Result16 = {} extends object ? 1 : 2;
+type Result17 = object extends Object ? 1 : 2;
+type Result18 = string extends object ? 1 : 2;
+type Result19 = {} extends object ? 1 : 2;
+type Result20 = object extends {} ? 1 : 2;
+type Result21 = object extends Object ? 1 : 2;
+type Result22 = Object extends object ? 1 : 2;
+type Result23 = {} extends Object ? 1 : 2;
+type Result24 = Object extends {} ? 1 : 2;
+type Result25 = Object extends any ? 1 : 2;
+type Result26 = Object extends unknown ? 1 : 2;
+
