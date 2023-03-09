@@ -952,30 +952,107 @@
 // anyType = source;
 // neverType = source;
 
-type Result1 = 'wangxiaobai' extends string ? 1 : 2;
-type Result2 = 1 extends number ? 1 : 2;
-type Result3 = true extends boolean ? 1 : 2;
-type Result4 = { name: string } extends object ? 1 : 2;
-type Result5 = { name: 'wangxiaobai' } extends object ? 1 : 2;
-type Result6 = [] extends object ? 1 : 2;
-type Result7 = 1 extends 1 | 2 | 3 ? 1 : 2;
-type Result8 = 'wang' extends 'wang' | 'xiao' | 'bai' ? 1 : 2;
-type Result9 = true extends true | false ? 1 : 2;
-type Result10 = string extends string | number | false ? 1 : 2;
-type Result11 = 'wang' | 'xiao' | 'bai' extends string ? 1 : 2;
-type Result12 = {} | (() => {}) | [] extends object ? 1 : 2;
-type Result13 = 'wangxiaobai' extends 'wangxiaobai' | 18 ? 'wangxiabai' | '18' extends string ? 2 : 1 : 0;
-type Result14 = string extends String ? 1 : 2;
-type Result15 = String extends {} ? 1 : 2;
-type Result16 = {} extends object ? 1 : 2;
-type Result17 = object extends Object ? 1 : 2;
-type Result18 = string extends object ? 1 : 2;
-type Result19 = {} extends object ? 1 : 2;
-type Result20 = object extends {} ? 1 : 2;
-type Result21 = object extends Object ? 1 : 2;
-type Result22 = Object extends object ? 1 : 2;
-type Result23 = {} extends Object ? 1 : 2;
-type Result24 = Object extends {} ? 1 : 2;
-type Result25 = Object extends any ? 1 : 2;
-type Result26 = Object extends unknown ? 1 : 2;
+// type Result1 = 'wangxiaobai' extends string ? 1 : 2;
+// type Result2 = 1 extends number ? 1 : 2;
+// type Result3 = true extends boolean ? 1 : 2;
+// type Result4 = { name: string } extends object ? 1 : 2;
+// type Result5 = { name: 'wangxiaobai' } extends object ? 1 : 2;
+// type Result6 = [] extends object ? 1 : 2;
+// type Result7 = 1 extends 1 | 2 | 3 ? 1 : 2;
+// type Result8 = 'wang' extends 'wang' | 'xiao' | 'bai' ? 1 : 2;
+// type Result9 = true extends true | false ? 1 : 2;
+// type Result10 = string extends string | number | false ? 1 : 2;
+// type Result11 = 'wang' | 'xiao' | 'bai' extends string ? 1 : 2;
+// type Result12 = {} | (() => {}) | [] extends object ? 1 : 2;
+// type Result13 = 'wangxiaobai' extends 'wangxiaobai' | 18 ? 'wangxiabai' | '18' extends string ? 2 : 1 : 0;
+// type Result14 = string extends String ? 1 : 2;
+// type Result15 = String extends {} ? 1 : 2;
+// type Result16 = {} extends object ? 1 : 2;
+// type Result17 = object extends Object ? 1 : 2;
+// type Result18 = string extends object ? 1 : 2;
+// type Result19 = {} extends object ? 1 : 2;
+// type Result20 = object extends {} ? 1 : 2;
+// type Result21 = object extends Object ? 1 : 2;
+// type Result22 = Object extends object ? 1 : 2;
+// type Result23 = {} extends Object ? 1 : 2;
+// type Result24 = Object extends {} ? 1 : 2;
+// type Result25 = Object extends any ? 1 : 2;
+// type Result26 = Object extends unknown ? 1 : 2;
+// type Result27 = any extends Object ? 1 : 2;
+// type Result28 = unknown extends Object ? 1 : 2;
+// type Result29 = any extends 'wangxiaobai' ? 1 : 2;
+// type Result30 = any extends string ? 1 : 2;
+// type Result31 = any extends {} ? 1 : 2;
+// type Result32 = any extends never ? 1 : 2;
+// type Result33 = any extends unknown ? 1 : 2;
+// type Result34 = unknown extends any ? 1 : 2;
+// type Result35 = never extends 'wangxiaobai' ? 1 : 2;
+// type Result36 = undefined extends 'wangxiaobai' ? 1 : 2;
+// type Result37 = null extends 'wangxiaobai' ? 1 : 2;
+// type Result38 = void extends 'wangxiaobai' ? 1 : 2;
+// type Result39 = 1 | 2 | 3 extends 1 | 2 | 3 | 4 ? 1 : 2;
+// type Result40 = 2 | 4 extends 1 | 2 | 3 | 4 ? 1 : 2;
+// type Result41 = 1 | 2 | 5 extends 1 | 2 | 3 | 4 ? 1 : 2;
+// type Result42 = 1 | 5 extends 1 | 2 | 3 | 4 ? 1 : 2;
+// type Result43 = [number, number] extends number[] ? 1 : 2;
+// type Result44 = [number, string] extends number[] ? 1 : 2;
+// type Result45 = [number, string] extends (number | string)[] ? 1 : 2;
+// type Result46 = [] extends number[] ? 1 : 2;
+// type Result47 = [] extends unknown[] ? 1 : 2;
+// type Result48 = number[] extends (number | string)[] ? 1 : 2;
+// type Result49 = any[] extends number[] ? 1 : 2;
+// type Result50 = unknown[] extends number[] ? 1 : 2;
+// type Result51 = never[] extends number[] ? 1 : 2;
+//
+// type TypeChain = never extends 'wangxiaobai'
+//   ? 'wangxiaobai' extends 'wangxiaobai' | '18'
+//     ? 'wangxiaobai' | '18' extends string
+//       ? string extends String
+//         ? String extends Object
+//           ? Object extends any
+//             ? any extends unknown
+//               ? unknown extends any
+//                 ? 8
+//                 : 7
+//               :6
+//             :5
+//           :4
+//         :3
+//       :2
+//     :1
+//   :0
+//
+// type VerboseTypeChain = never extends 'wangxiaobai'
+//   ? 'wangxiaobai' extends 'wangxiaobai' | '18'
+//     ? 'wangxiaobai' | '18' extends string
+//       ? string extends {}
+//         ? string extends String
+//           ? String extends {}
+//             ? {} extends object
+//               ? object extends {}
+//                 ? {} extends Object
+//                   ? Object extends {}
+//                     ? object extends Object
+//                       ? Object extends object
+//                         ? Object extends any
+//                           ? Object extends unknown
+//                             ? any extends unknown
+//                               ? unknown extends any
+//                                 ? 8
+//                                 : 7
+//                               : 6
+//                             : 5
+//                           : 4
+//                         : 3
+//                       : 2
+//                     : 1
+//                   : 0
+//                 : -1
+//               : -2
+//             : -3
+//           : -4
+//         : -5
+//       : -6
+//     : -7
+//   : -8
 
