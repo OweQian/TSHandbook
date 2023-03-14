@@ -1056,3 +1056,80 @@
 //     : -7
 //   : -8
 
+// type LiteralType<T> = T extends string ? 'string' : 'other';
+//
+// type Res1 = LiteralType<'wangxiaobai'>;
+// type Res2 = LiteralType<18>;
+
+// type LiteralType<T> = T extends string
+//   ? 'string'
+//   : T extends number
+//     ? 'number'
+//     : T extends boolean
+//       ? 'boolean'
+//       : T extends null
+//         ? 'null'
+//         : T extends undefined
+//           ? 'undefined'
+//           : never
+//
+// type Res1 = LiteralType<'wangxiaobai'>;
+// type Res2 = LiteralType<18>;
+// type Res3 = LiteralType<true>;
+
+// function universalAdd<T extends number | bigint | string>(x: T, y: T): LiteralToPrimitive<T> {
+//   return x + (y as any);
+// }
+//
+// universalAdd(18, 1);
+// universalAdd('wangxiaobai', '18');
+//
+// type LiteralToPrimitive<T> = T extends number
+//   ? number
+//   : T extends bigint
+//     ? bigint
+//     : T extends string
+//       ? string
+//       : never;
+
+// type Func = (...args: any[]) => any;
+//
+// type FunctionConditionType<T extends Func> = T extends (...args: any[]) => string ? 'a string return func' : 'a non-string return func';
+//
+// type StringResult = FunctionConditionType<() => string>;
+// type NonStringResult = FunctionConditionType<() => number>;
+//
+// type FunctionConditionType<T extends Func> = T extends (...args: any[]) => infer R ? R : never;
+//
+// type Swap<T extends any[]> = T extends [infer A, infer B] ? [B, A] : T;
+//
+// type SwapResult1 = Swap<[1, 2]>;
+// type SwapResult2 = Swap<[1, 2, 3]>;
+//
+// type ExtractStartAndEnd<T extends any[]> = T extends [infer Start, ...any[], infer End] ? [Start, End] : T;
+// type SwapStartAndEnd<T extends any[]> = T extends [infer Start, ...infer Left, infer End] ? [End, ...Left, Start] : T;
+// type SwapFirstTwo<T extends any[]> = T extends [infer Start1, infer Start2, ...infer Left] ? [Start2, Start1, ...Left] : T;
+//
+// type ArrayItemType<T> = T extends Array<infer ElementType> ? ElementType : never;
+//
+// type ArrayItemTypeResult1 = ArrayItemType<[]>;
+// type ArrayItemTypeResult2 = ArrayItemType<string[]>;
+// type ArrayItemTypeResult3 = ArrayItemType<[string, number]>;
+//
+// type PropType<T, K extends keyof T> = T extends { [Key in K]: infer R } ? R : never;
+//
+// type PropTypeResult1 = PropType<{ name: string }, 'name'>;
+// type PropTypeResult2 = PropType<{ name: string; age: number }, 'name' | 'age'>;
+//
+// type ReverseKeyValue<T extends Record<string, unknown>> = T extends Record<infer K, infer V> ? Record<V & string, K> : never;
+//
+// type ReverseKeyValueResult = ReverseKeyValue<{ 'key': 'value' }>;
+//
+// type PromiseValue<T> = T extends Promise<infer V> ? V : T;
+//
+// type PromiseValueResult1 = PromiseValue<Promise<number>>;
+// type PromiseValueResult2 = PromiseValue<number>;
+
+// type PromiseValue<T> = T extends Promise<infer V> ? V extends Promise<infer N> ? N : V : T;
+//
+// type PromiseValue<T> = T extends Promise<infer V> ? PromiseValue<V> : T;
