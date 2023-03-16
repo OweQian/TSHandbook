@@ -1133,3 +1133,34 @@
 // type PromiseValue<T> = T extends Promise<infer V> ? V extends Promise<infer N> ? N : V : T;
 //
 // type PromiseValue<T> = T extends Promise<infer V> ? PromiseValue<V> : T;
+
+type Condition<T> = T extends 1 | 2 | 3 ? T : never;
+
+type Res1 = Condition<1 | 2 | 3 | 4 | 5>;
+type Res2 = 1 | 2 | 3 | 4 | 5 extends 1 | 2 | 3 ? 1 | 2 | 3 | 4 | 5 : never;
+
+type Naked<T> = T extends boolean ? 'Y' : 'N';
+type Wrapped<T> = [T] extends [boolean] ? 'Y' : 'N';
+
+type Res3 = Naked<number | boolean>;
+type Res4 = Wrapped<number | boolean>;
+
+type CompareUnion<T, U> = [T] extends [U] ? true : false;
+
+type CompareUnionRes1 = CompareUnion<1 | 2, 1 |2 |3>;
+type CompareUnionRes2 = CompareUnion<1 | 2, 1>;
+
+type IsNever<T> = T extends never ? true : false;
+
+type IsNeverRes1 = IsNever<never>;
+type IsNeverRes2 = IsNever<'wangxiaobai'>;
+
+type Tmp1 = any extends string ? 1 : 2;  // 1 | 2
+type Tmp2<T> = T extends string ? 1 : 2;
+type Tmp2Res = Tmp2<any>; // 1 | 2
+type Special1 = any extends any ? 1 : 2; // 1
+type Special2<T> = T extends any ? 1 : 2;
+type Special2Res = Special2<any>; // 1
+
+type Intersection<A, B> = A extends B ? A : never;
+type IntersectionRes = Intersection<1 | 2 | 3, 2 | 3 | 4>;
