@@ -1,33 +1,33 @@
-// const name: string = 'wangxiaobia';
-// const age: number = 18;
-// const male: boolean = false;
-// const undef: undefined = undefined;
-// const nul: null = null;
-// const bigIntVar1: bigint = 9007199254740991n;
-// const symbolVar: symbol = Symbol('unique');
+// // const name: string = 'wangxiaobia';
+// // const age: number = 18;
+// // const male: boolean = false;
+// // const undef: undefined = undefined;
+// // const nul: null = null;
+// // const bigIntVar1: bigint = 9007199254740991n;
+// // const symbolVar: symbol = Symbol('unique');
+// //
+// // const temp1: null = null;
+// // const temp2: undefined = undefined;
+// // const temp3: string = null;
+// // const temp4: string = undefined;
+// //
+// // function func1 () {};
+// // function func2 () { return };
+// // function func3 () {
+// //   return undefined;
+// // }
+// //
+// // const voidVar1: void = null;
+// // const voidVar2: void = undefined;
+// //
+// // const arr1: string[] = [];
+// // const arr2: Array<string> = [];
+// //
+// // const arr3: [string, string, string] = ['wang', 'xiao', 'bai'];
+// // arr3[599];
+// //
+// // const arr4: [string, number, boolean] = ['wang', 599, true];
 //
-// const temp1: null = null;
-// const temp2: undefined = undefined;
-// const temp3: string = null;
-// const temp4: string = undefined;
-//
-// function func1 () {};
-// function func2 () { return };
-// function func3 () {
-//   return undefined;
-// }
-//
-// const voidVar1: void = null;
-// const voidVar2: void = undefined;
-//
-// const arr1: string[] = [];
-// const arr2: Array<string> = [];
-//
-// const arr3: [string, string, string] = ['wang', 'xiao', 'bai'];
-// arr3[599];
-//
-// const arr4: [string, number, boolean] = ['wang', 599, true];
-
 // const arr5: [string, number?, boolean?] = ['wang'];
 //
 // const arr6: [name: string, age: number, male: boolean] = ['wang', 599, false];
@@ -63,7 +63,7 @@
 // };
 //
 // obj3.name = 'OweQian';
-
+//
 // const temp1: Object = undefined;
 // const temp2: Object = null;
 // const temp3: Object = void 0;
@@ -105,6 +105,132 @@
 // const temp32: {} = [];
 //
 // temp31.age = 18;
+//
+// interface IResponseProps {
+//   code: number;
+//   status: string;
+//   data: any;
+// }
+//
+// interface IResponseProps {
+//   code: 10000 | 10001 | 50000;
+//   status: 'success' | 'failure';
+//   data: any;
+// }
+//
+// declare var res: IResponseProps;
+//
+// if (res.status === 'success') {
+//   console.log(res.data);
+// }
+//
+// const name: 'wangxiaobai' = 'wangxiaobai';
+// const age: 18 = 18;
+// const male: false = false;
+//
+// const str1: 'wangxiaobai' = 'wangxiaobai18';
+// const str2: string = 'wangxiaobai';
+// const str3: string = 'wangxiaobai3';
+//
+// interface ITempProps {
+//   bool: true | false;
+//   num: 1 | 2 | 3;
+//   str: 'wang' | 'xiao' | 'bai'
+// }
+//
+// interface ITempMixedProps {
+//   mixed: true | string | 18 | {} | (() => {}) | (1 | 2)
+// }
+//
+// interface ITempProps {
+//   user:
+//     | {
+//     vip: true;
+//     expires: string;
+//   }
+//   | {
+//     vip: false;
+//     promotion: string;
+//   }
+// }
+//
+// declare var temp: ITempProps;
+//
+// if (temp.user.vip) {
+//   console.log(temp.user.expires);
+// }
+//
+// type Code = 10000 | 10001 | 50000;
+// type Status = 'success' | 'failure';
+//
+// interface ITempProps {
+//   obj: {
+//     name: 'wangxiaobai';
+//     age: 18
+//   }
+// }
+//
+// const temp: ITempProps = {
+//   obj: {
+//     name: 'wangxiaobai',
+//     age: 18
+//   }
+// }
+//
+// enum PageUrl {
+//   Home_Page_Url = 'home',
+//   Setting_Page_Url = 'setting',
+//   Share_Page_Url = 'share',
+// }
+//
+// const home = PageUrl.Home_Page_Url;
+//
+// enum Items {
+//   Foo,
+//   Bar,
+//   Baz,
+// }
+//
+// enum Items {
+//   Foo,
+//   Bar = 18,
+//   Baz,
+// }
+//
+// const returnNum = () => 100 + 18;
+// enum Items {
+//   Foo = returnNum(),
+//   Bar = 18,
+//   Baz,
+// }
+//
+// enum Items {
+//   Baz,
+//   Foo = returnNum(),
+//   Bar = 18,
+// }
+//
+// enum Mixed {
+//   Num = 18,
+//   Str = 'wangxiaobai'
+// }
+//
+// enum Items {
+//   Foo,
+//   Bar,
+//   Baz,
+// }
+//
+// const fooValue = Items.Foo;
+// const fooKey = Items[0];
+//
+// const enum Items {
+//   Foo,
+//   Bar,
+//   Baz,
+// }
+//
+// const fooValue = Items.Foo;
 
 // function foo (name: string): number {
 //   return name.length;
@@ -1133,34 +1259,96 @@
 // type PromiseValue<T> = T extends Promise<infer V> ? V extends Promise<infer N> ? N : V : T;
 //
 // type PromiseValue<T> = T extends Promise<infer V> ? PromiseValue<V> : T;
+//
+// type Condition<T> = T extends 1 | 2 | 3 ? T : never;
+//
+// type Res1 = Condition<1 | 2 | 3 | 4 | 5>;
+// type Res2 = 1 | 2 | 3 | 4 | 5 extends 1 | 2 | 3 ? 1 | 2 | 3 | 4 | 5 : never;
+//
+// type Naked<T> = T extends boolean ? 'Y' : 'N';
+// type Wrapped<T> = [T] extends [boolean] ? 'Y' : 'N';
+//
+// type Res3 = Naked<number | boolean>;
+// type Res4 = Wrapped<number | boolean>;
+//
+// type CompareUnion<T, U> = [T] extends [U] ? true : false;
+//
+// type CompareUnionRes1 = CompareUnion<1 | 2, 1 |2 |3>;
+// type CompareUnionRes2 = CompareUnion<1 | 2, 1>;
+//
+// type IsNever<T> = T extends never ? true : false;
+//
+// type IsNeverRes1 = IsNever<never>;
+// type IsNeverRes2 = IsNever<'wangxiaobai'>;
+//
+// type Tmp1 = any extends string ? 1 : 2;  // 1 | 2
+// type Tmp2<T> = T extends string ? 1 : 2;
+// type Tmp2Res = Tmp2<any>; // 1 | 2
+// type Special1 = any extends any ? 1 : 2; // 1
+// type Special2<T> = T extends any ? 1 : 2;
+// type Special2Res = Special2<any>; // 1
+//
+// type Intersection<A, B> = A extends B ? A : never;
+// type IntersectionRes = Intersection<1 | 2 | 3, 2 | 3 | 4>;
 
-type Condition<T> = T extends 1 | 2 | 3 ? T : never;
+// type Partial<T> = {
+//   [P in keyof T]?: T[P];
+// }
+//
+// type Required<T> = {
+//   [P in keyof T]-?: T[P];
+// }
+//
+// type Readonly<T> = {
+//   readonly [P in keyof T]: T[P];
+// }
+//
+// interface Foo {
+//   optional: string | undefined;
+//   required: boolean;
+// }
+//
+// const foo1: Foo = {
+//   optional: undefined,
+//   required: false,
+// }
 
-type Res1 = Condition<1 | 2 | 3 | 4 | 5>;
-type Res2 = 1 | 2 | 3 | 4 | 5 extends 1 | 2 | 3 ? 1 | 2 | 3 | 4 | 5 : never;
+// type Readonly<T> = {
+//   +readonly [P in keyof T]: T[P];
+// }
+//
+// type Mutable<T> = {
+//   -readonly [P in keyof T]: T[P];
+// }
 
-type Naked<T> = T extends boolean ? 'Y' : 'N';
-type Wrapped<T> = [T] extends [boolean] ? 'Y' : 'N';
+// type Record<K extends keyof any, T> = {
+//   [P in K]: T;
+// }
+//
+// type Record1 = Record<string, unknown>;
+// type Record2= Record<string, any>;
+// type Record3 = Record<string | number, any>;
+//
+// type Dictionary<T> = {
+//   [index: string]: T;
+// }
+//
+// type NumericDictionary<T> = {
+//   [index: number]: T;
+// }
 
-type Res3 = Naked<number | boolean>;
-type Res4 = Wrapped<number | boolean>;
+type Pick<T, K extends keyof T> = {
+  [P in K]: T[P];
+}
 
-type CompareUnion<T, U> = [T] extends [U] ? true : false;
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
 
-type CompareUnionRes1 = CompareUnion<1 | 2, 1 |2 |3>;
-type CompareUnionRes2 = CompareUnion<1 | 2, 1>;
+interface Foo {
+  name: string;
+  age: number;
+}
 
-type IsNever<T> = T extends never ? true : false;
+type PickedFoo = Pick<Foo, 'name'>;
 
-type IsNeverRes1 = IsNever<never>;
-type IsNeverRes2 = IsNever<'wangxiaobai'>;
-
-type Tmp1 = any extends string ? 1 : 2;  // 1 | 2
-type Tmp2<T> = T extends string ? 1 : 2;
-type Tmp2Res = Tmp2<any>; // 1 | 2
-type Special1 = any extends any ? 1 : 2; // 1
-type Special2<T> = T extends any ? 1 : 2;
-type Special2Res = Special2<any>; // 1
-
-type Intersection<A, B> = A extends B ? A : never;
-type IntersectionRes = Intersection<1 | 2 | 3, 2 | 3 | 4>;
+type Temp1 = Exclude<1 | 2, 2>;
+type Temp2 = Exclude<1 | 2 | 3, 2 | 4>;
