@@ -1337,18 +1337,87 @@
 //   [index: number]: T;
 // }
 
-type Pick<T, K extends keyof T> = {
-  [P in K]: T[P];
-}
+// type Pick<T, K extends keyof T> = {
+//   [P in K]: T[P];
+// }
+//
+// type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+//
+// interface Foo {
+//   name: string;
+//   age: number;
+// }
+//
+// type PickedFoo = Pick<Foo, 'name'>;
+//
+// type Temp1 = Exclude<1 | 2, 2>;
+// type Temp2 = Exclude<1 | 2 | 3, 2 | 4>;
+//
+// type Omit1<T, K> = Pick<T, Exclude<keyof T, K>>;
+// type Omit2<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+//
+// declare function combineSpread<T1, T2>(obj: T1, otherObj: T2, rest: Omit1<T1, keyof T2>): void;
+//
+// type Point3d = {
+//   x: number;
+//   y: number;
+//   z: number;
+// }
+// declare const p1: Point3d;
+//
+// combineSpread(p1, {x: 10}, {z: 2});
 
-type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
 
-interface Foo {
-  name: string;
-  age: number;
-}
+// type Extract<T, U> = T extends U ? T : never;
+// type Exclude<T, U> = T extends U ? never : T;
+//
+// type AExtractB = Extract<1 | 2 | 3, 1 | 2 | 3 | 4>;
+// type _AExtractB =
+//   | (1 extends 1 | 2 | 4 ? 1 : never)
+//   | (2 extends 1 | 2 | 4 ? 2 : never)
+//   | (3 extends 1 | 2 | 4 ? 3 : never)
 
-type PickedFoo = Pick<Foo, 'name'>;
+// type SetA = 1 | 2 | 3 | 5;
+// type SetB = 0 | 1 | 2 | 4;
+//
+// type AExcludeB = Exclude<SetA, SetB>;
+// type BExcludeA = Exclude<SetB, SetA>;
+//
+// type _AExcludeB =
+//   | (1 extends 0 | 1 | 2 | 4 ? never : 1)
+//   | (2 extends 0 | 1 | 2 | 4 ? never : 2)
+//   | (3 extends 0 | 1 | 2 | 4 ? never : 3)
+//   | (5 extends 0 | 1 | 2 | 4 ? never : 5)
+//
+// type _BExcludeA =
+//   | (0 extends 1 | 2 | 3 | 5 ? never : 0)
+//   | (1 extends 1 | 2 | 3 | 5 ? never : 1)
+//   | (2 extends 1 | 2 | 3 | 5 ? never : 2)
+//   | (4 extends 1 | 2 | 3 | 5 ? never : 4)
 
-type Temp1 = Exclude<1 | 2, 2>;
-type Temp2 = Exclude<1 | 2 | 3, 2 | 4>;
+// type Concurrence<A, B> = A | B;
+// type Intersection<A, B> = A extends B ? A : never;
+// type Difference<A, B> = A extends B ? never : A;
+// type Complement<A, B extends A> = Difference<A, B>;
+//
+// type NonNullable<T> = T extends null | undefined ? never : T;
+// type _NonNullable<T> = Difference<T, null | undefined>;
+
+// type FunctionType = (...args: any) => any;
+//
+// type Parameters<T extends FunctionType> = T extends (...args: infer P) => any ? P : never;
+// type ReturnType<T extends FunctionType> = T extends (...args: any) => infer R ? R : any;
+//
+// type FirstParameter<T extends FunctionType> = T extends (arg: infer P, ...args: any) => any ? P : never;
+//
+// type FuncFoo = (age: number) => any;
+// type FuncBar = (...args: string[]) => any;
+//
+// type FooFirstParameter = FirstParameter<FuncFoo>;
+// type BarFirstParameter = FirstParameter<FuncBar>;
+//
+// type ClassType = abstract new (...args: any) => any;
+//
+// type ConstructorParameters<T extends ClassType> = T extends abstract new (...args: infer P) => any ? P : never;
+// type InstanceType<T extends ClassType> = T extends abstract new (...args: any) => infer R ? R : any;
+//
