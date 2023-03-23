@@ -1421,3 +1421,57 @@
 // type ConstructorParameters<T extends ClassType> = T extends abstract new (...args: infer P) => any ? P : never;
 // type InstanceType<T extends ClassType> = T extends abstract new (...args: any) => infer R ? R : any;
 //
+
+// window.onerror = (event, source, line, col, err) => {};
+//
+// type CustomHandler = (name: string, age: number) => boolean;
+//
+// const handler: CustomHandler = (arg1, arg2) => true;
+//
+// declare const struct: {
+//   handler: CustomHandler;
+// }
+//
+// struct.handler = (name, age) => {};
+//
+// window.onerror = (event) => {};
+// window.onerror = (event, source, line, col, err, extra) => {}
+
+// declare let func: (raw: number) => (input: string) => any;
+//
+// func = (raw) => {
+//   return (input) => {}
+// }
+
+// class Foo {
+//   foo!: number;
+// }
+//
+// class Bar extends Foo {
+//   bar!: number;
+// }
+//
+// // let f1: { (input: Foo): void } | { (input: Bar): void }
+//
+// let f1: { (input: Foo | Bar): void }
+//
+// f1 = (input) => {}
+//
+// let f3:
+//   | { (raw: number): (input: Foo) => void }
+//   | { (raw: number): (input: Bar) => void }
+//
+// f3 = (raw) => input => {}
+//
+// type CustomHandler = (name: string, age: number) => void;
+//
+// const handler1: CustomHandler = (name, age) => true;
+// const handler2: CustomHandler = (name, age) => 'wangxiaobai';
+// const handler3: CustomHandler = (name, age) => null;
+// const handler4: CustomHandler = (name, age) => undefined;
+//
+// const result1 = handler1('wangxiaobai', 18);
+// const result2 = handler2('wangxiaobai', 18);
+// const result3 = handler3('wangxiaobai', 18);
+// const result4 = handler4('wangxiaobai', 18);
+
