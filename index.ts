@@ -1545,8 +1545,32 @@
 //
 // type MakePropsAsNonNullable<T extends object, K extends keyof T = keyof T> = Flatten<NonNullable<Pick<T, K>> & Omit<T, K>>;
 
+type FuncStruct = (...args: any[]) => any;
 
+type FunctionKeys<T extends object> = {
+  [K in keyof T]: T[K] extends FuncStruct ? K : never;
+}[keyof T];
 
+type Tmp<T extends object> = {
+  [K in keyof T]: T[K] extends FuncStruct ? K : never;
+}
 
+type Res = Tmp<{
+  foo: () => void;
+  bar: () => number;
+  baz: number;
+}>;
+
+type ResEqual = {
+  foo: 'foo';
+  bar: 'bar';
+  baz: never;
+}
+
+type WhatWillGet = Res[keyof Res];
+
+type WhatWillGet1 = Res['foo' | 'bar' | 'baz'];
+type WhatWillGet2 = Res['foo'] | Res['bar'] | Res['baz'];
+type WhatWillGet3 = 'foo' | 'bar' | never;
 
 
