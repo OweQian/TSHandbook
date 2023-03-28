@@ -1475,3 +1475,78 @@
 // const result3 = handler3('wangxiaobai', 18);
 // const result4 = handler4('wangxiaobai', 18);
 
+// class Animal {
+//   asPet() {}
+// }
+//
+// class Dog extends Animal {
+//   bark() {}
+// }
+//
+// class Corgi extends Dog {
+//   cute() {}
+// }
+//
+// function makeDogBark(dog: Dog) {
+//   dog.bark();
+// }
+//
+// makeDogBark(new Corgi());
+// makeDogBark(new Animal());
+//
+// type DogFactory = (args: Dog) => Dog;
+//
+// function transformDogAndBark(dogFactory: DogFactory) {
+//   const dog = dogFactory(new Dog());
+//   dog.bark();
+// }
+
+// type PromiseValue<T> =  T extends Promise<infer V> ? PromiseValue<V> : T;
+//
+// type DeepPartial<T extends object> = {
+//   [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+// }
+//
+// type DeepRequired<T extends object> = {
+//   [K in keyof T]-?: T[K] extends object ? DeepRequired<T[K]> : T[K];
+// }
+//
+// type DeepReadonly<T extends object> = {
+//   readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K];
+// }
+//
+// type DeepMutable<T extends object> = {
+//   -readonly [K in keyof T]: T[K] extends object ? DeepMutable<T[K]> : T[K];
+// }
+//
+// type NonNullable<T> = T extends null | undefined ? never : T;
+//
+// type DeepNonNullable<T extends object> = {
+//   [K in keyof T]: T[K] extends object ? DeepNonNullable<T[K]> : NonNullable<T[K]>;
+// }
+//
+// type Nullable<T> = T | null;
+//
+// type DeepNullable<T extends object> = {
+//   [K in keyof T]: T[K] extends object ? DeepNullable<T[K]> : Nullable<T[K]>;
+// }
+//
+// type Flatten<T> = {
+//   [K in keyof T]: T[K];
+// }
+//
+// type MakePropsAsOptional<T extends object, K extends keyof T = keyof T> = Flatten<Partial<Pick<T, K>> & Omit<T, K>>;
+//
+// type MakePropsAsRequired<T extends object, K extends keyof T = keyof T> = Flatten<Required<Pick<T, K>> & Omit<T, K>>;
+//
+// type MakePropsAsReadonly<T extends object, K extends keyof T = keyof T> = Flatten<Readonly<Pick<T, K>> & Omit<T, K>>;
+//
+// type MakePropsAsNullable<T extends object, K extends keyof T = keyof T> = Flatten<Nullable<Pick<T, K>> & Omit<T, K>>;
+//
+// type MakePropsAsNonNullable<T extends object, K extends keyof T = keyof T> = Flatten<NonNullable<Pick<T, K>> & Omit<T, K>>;
+
+
+
+
+
+
